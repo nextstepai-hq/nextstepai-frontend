@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NextStep AI — Certificate of Completion</title>
+<style>
+  :root{
+    --cream:#FFF9F0; --paper:#FFFCF6; --navy:#0A192F; --blue:#1559C9;
+    --orange:#FF6B35; --orange-dark:#F4511E; --muted:#385574; --line:#E8D8C5;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:#f0eee9;color:var(--navy);font-family:Inter,Arial,Helvetica,sans-serif}
+  .toolbar{max-width:1200px;margin:22px auto 14px;padding:14px 18px;background:#fff;border:1px solid #e8e3da;border-radius:14px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;box-shadow:0 8px 28px #0a192f0b}
+  .toolbar strong{margin-right:auto;font-size:14px}
+  .toolbar label{font-size:12px;color:#52647d;display:flex;gap:6px;align-items:center}
+  .toolbar input{width:150px;padding:9px 10px;border:1px solid #ddd5ca;border-radius:8px;color:var(--navy);background:#fff}
+  .btn{border:0;border-radius:9px;padding:10px 15px;font-weight:700;cursor:pointer;background:var(--orange);color:#fff}
+  .btn.secondary{background:var(--navy)}
+  .sheet-wrap{padding:0 20px 28px;overflow-x:auto}
+  .certificate{position:relative;width:min(1120px,100%);min-width:760px;aspect-ratio:1.414/1;margin:0 auto;background:
+    radial-gradient(ellipse at 86% 78%,#ffead0a8 0,transparent 29%),
+    radial-gradient(ellipse at 12% 12%,#fff 0,transparent 30%),var(--cream);
+    box-shadow:0 22px 70px #18253b20;overflow:hidden;padding:5.1% 6.3%;isolation:isolate}
+  .certificate:before{content:"";position:absolute;inset:2.1%;border:1.5px solid var(--orange);pointer-events:none;z-index:-1}
+  .certificate:after{content:"";position:absolute;width:38%;aspect-ratio:1;right:4%;bottom:10%;opacity:.055;background:linear-gradient(135deg,#1688ff 0 48%,transparent 48% 54%,#ff6b35 54%);clip-path:polygon(0 70%,20% 20%,39% 20%,60% 48%,85% 0,100% 10%,94% 55%,78% 42%,60% 75%,42% 75%,25% 48%,15% 85%);z-index:-1}
+  .corner{position:absolute;width:42px;height:42px;background:var(--navy);clip-path:polygon(0 0,100% 0,0 100%);z-index:2}
+  .corner:after{content:"";position:absolute;inset:0;border-top:5px solid var(--orange)}
+  .c1{top:2.1%;left:2.1%}.c2{top:2.1%;right:2.1%;transform:rotate(90deg)}.c3{bottom:2.1%;left:2.1%;transform:rotate(-90deg)}.c4{bottom:2.1%;right:2.1%;transform:rotate(180deg)}
+  .top{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;position:relative;z-index:1}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand-logo{width:142px;height:82px;flex:none;object-fit:contain}
+  .brand-name{font-weight:850;font-size:clamp(20px,2.6vw,34px);letter-spacing:-1.5px;white-space:nowrap}
+  .brand-name span{color:var(--orange)}
+  .tagline{font-size:10px;letter-spacing:4px;margin-top:4px;color:var(--muted);white-space:nowrap}
+  .meta{text-align:right;font-size:12px;line-height:1.9;color:var(--muted);padding-top:5px}
+  .meta b{color:var(--navy);font-weight:700}
+  .main{margin-top:5.5%;max-width:76%;position:relative;z-index:1}
+  .eyebrow{font-size:clamp(12px,1.35vw,17px);font-weight:800;letter-spacing:5px;text-transform:uppercase;margin:0 0 14px}
+  .certifies{font-size:clamp(10px,1.1vw,13px);letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+  .recipient{font-family:Georgia,'Times New Roman',serif;font-size:clamp(34px,5.2vw,64px);font-weight:700;letter-spacing:-1.5px;line-height:1.08;margin:0 0 16px;overflow-wrap:anywhere}
+  .copy{font-size:clamp(12px,1.35vw,16px);line-height:1.65;color:var(--muted);max-width:700px;margin:0}
+  .course{font-size:clamp(25px,3.5vw,43px);font-weight:850;letter-spacing:-1px;color:var(--orange);margin:10px 0 12px;line-height:1.1}
+  .modules{display:flex;align-items:stretch;gap:0;margin-top:3.4%;max-width:790px}
+  .module{flex:1;padding:0 12px;border-right:1px solid #c9c7c1;font-size:10px;line-height:1.45;font-weight:700}
+  .module:first-child{padding-left:0}.module:last-child{border:0}
+  .module-icon{width:34px;height:34px;border-radius:9px;background:#ffead7;color:var(--orange);display:grid;place-items:center;font-size:19px;margin-bottom:6px}
+  .module small{display:block;color:var(--muted);font-size:9px;font-weight:500}
+  .seal{position:absolute;right:7.4%;top:18%;width:21%;max-width:210px;aspect-ratio:.78;display:flex;align-items:center;justify-content:center;z-index:1}
+  .ribbon{position:absolute;top:-28%;left:28%;width:44%;height:76%;background:linear-gradient(90deg,#0a192f,#17365e 50%,#0a192f);border-left:5px solid var(--orange);border-right:5px solid var(--orange);z-index:-1}
+  .ribbon:after{content:"";position:absolute;bottom:-1px;left:0;width:100%;height:25%;background:var(--navy);clip-path:polygon(0 0,50% 50%,100% 0,100% 100%,0 100%)}
+  .medal{width:100%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#12396d 0,#0a192f 67%);border:7px solid #ffb34d;box-shadow:0 0 0 3px #fff1d3,0 8px 24px #0a192f24;display:flex;align-items:center;justify-content:center;flex-direction:column;color:#fff;text-align:center;position:relative}
+  .medal:before{content:"";position:absolute;inset:7px;border:1px solid #ffbf62;border-radius:50%}
+  .medal .mini-mark{width:48px;height:34px;margin-bottom:4px}
+  .medal b{font-size:clamp(10px,1.2vw,15px)}
+  .medal span{font-size:9px;letter-spacing:3px;margin-top:7px}
+  .medal .star{color:#ffb52e;font-size:18px;margin-top:4px}
+  .bottom{position:absolute;left:6.3%;right:6.3%;bottom:6.7%;display:grid;grid-template-columns:1fr 1.15fr 1fr;align-items:end;gap:18px;z-index:1}
+  .signature{max-width:230px}
+  .sig-line{width:160px;border-bottom:1.5px solid var(--navy);height:32px;margin-bottom:7px;position:relative}
+  .sig-line:before{content:"";position:absolute;left:6px;top:7px;width:76px;height:21px;border-top:2px solid var(--navy);border-radius:50%;transform:rotate(-18deg)}
+  .sig-line:after{content:"";position:absolute;left:44px;top:0;width:2px;height:33px;background:var(--navy);transform:rotate(26deg);opacity:.8}
+  .sign-name{font-size:13px;font-weight:800}.sign-role{font-size:10px;color:var(--muted);letter-spacing:1px;margin-top:4px}
+  .motto{text-align:center;font-size:10px;letter-spacing:3px;line-height:1.9;font-weight:700;color:#21456f;padding-bottom:10px}
+  .motto:after{content:"";display:block;width:62px;height:2px;background:var(--orange);margin:10px auto 0}
+  .verify{display:flex;align-items:center;justify-content:flex-end;gap:10px}
+  #qrcode{width:78px;height:78px;min-width:78px;border:1px solid var(--orange);border-radius:9px;background:white;padding:5px;display:grid;place-items:center;overflow:hidden}
+  #qrcode canvas,#qrcode img{max-width:100%;max-height:100%}
+  .verify-copy{font-size:10px;line-height:1.5;color:var(--muted);max-width:140px}
+  .verify-copy b{display:block;color:#16794b;font-size:11px;margin-bottom:3px}
+  .shield{color:#13a46b;font-size:15px}
+  .note{max-width:1120px;margin:0 auto 22px;color:#657083;font-size:12px;line-height:1.5}
+  @media(max-width:850px){.toolbar{margin:12px}.toolbar input{width:125px}.sheet-wrap{padding:0 12px 20px}.certificate{min-width:720px}.note{padding:0 12px}}
+  @page{size:A4 landscape;margin:0}
+  @media print{
+    body{background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .toolbar,.note{display:none!important}
+    .sheet-wrap{padding:0;overflow:visible}
+    .certificate{width:297mm;height:210mm;min-width:0;aspect-ratio:auto;margin:0;box-shadow:none;page-break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+  <div class="toolbar">
+    <strong>NextStep AI · Certificate Editor</strong>
+    <label>Recipient <input id="nameInput" value="Muhammad Ahsan" aria-label="Recipient name"></label>
+    <label>Course <input id="courseInput" value="Frontend Development" aria-label="Course name"></label>
+    <label>Certificate ID <input id="idInput" value="NSA-2026-1047" aria-label="Certificate ID"></label>
+    <label>Issue date <input id="dateInput" type="date" value="2026-10-19" aria-label="Issue date"></label>
+    <button class="btn" onclick="updateCertificate()">Update</button>
+    <button class="btn secondary" onclick="window.print()">Print / Save PDF</button>
+  </div>
+
+  <div class="sheet-wrap">
+    <main class="certificate" aria-label="NextStep AI Certificate of Completion">
+      <i class="corner c1"></i><i class="corner c2"></i><i class="corner c3"></i><i class="corner c4"></i>
+      <header class="top">
+        <div class="brand">
+          <img class="brand-logo" src="./NextStep%20AI%20Growth%20Logo%20(1).png" alt="NextStep AI — Learn, Build, Grow">
+        </div>
+        <div class="meta">
+          Certificate ID: <b id="certId">NSA-2026-1047</b><br>
+          Issued on: <b id="issueDate">19 Oct 2026</b>
+        </div>
+      </header>
+
+      <section class="main">
+        <h1 class="eyebrow">Certificate of Completion</h1>
+        <div class="certifies">This certifies that</div>
+        <h2 class="recipient" id="recipient">Muhammad Ahsan</h2>
+        <p class="copy">has successfully completed the NextStep AI learning program and demonstrated the required skills and knowledge in</p>
+        <div class="course" id="course">Frontend Development</div>
+        <p class="copy">This certificate recognizes completion of the required learning modules, practical projects, and assessments as part of the NextStep AI curriculum.</p>
+
+        <div class="modules">
+          <div class="module"><div class="module-icon">‹/›</div>HTML &amp; CSS<small>Foundations</small></div>
+          <div class="module"><div class="module-icon">⚛</div>React.js<small>Development</small></div>
+          <div class="module"><div class="module-icon">▱</div>State Management<small>&amp; APIs</small></div>
+          <div class="module"><div class="module-icon">▣</div>Real Project<small>Portfolio</small></div>
+          <div class="module"><div class="module-icon">✓</div>Skill Assessment<small>Completed</small></div>
+        </div>
+      </section>
+
+      <aside class="seal" aria-label="NextStep AI certified seal">
+        <div class="ribbon"></div>
+        <div class="medal">
+          <svg class="mini-mark" viewBox="0 0 100 82" aria-hidden="true">
+            <path d="M5 66 L22 24 Q31 5 47 23 L72 55 Q79 65 91 55 L77 73 Q67 80 55 66 L33 39 Q28 32 24 43 L15 66 Q12 72 5 66Z" fill="#159dff"/>
+            <path d="M57 53 L76 21 L65 18 L88 2 Q93 -1 94 7 L98 37 L88 29 L75 58 Q70 65 62 61Z" fill="#ff8a20"/>
+          </svg>
+          <b>NextStep AI</b>
+          <span>CERTIFIED</span>
+          <div class="star">★</div>
+        </div>
+      </aside>
+
+      <footer class="bottom">
+        <div class="signature">
+          <div class="sig-line"></div>
+          <div class="sign-name">NextStep AI Team</div>
+          <div class="sign-role">Program Administration</div>
+        </div>
+        <div class="motto">SKILLS TODAY.<br>OPPORTUNITIES TOMORROW.</div>
+        <div class="verify">
+          <div id="qrcode" aria-label="QR code for certificate verification"><span style="font-size:9px;color:#64748b;text-align:center">QR<br>VERIFY</span></div>
+          <div class="verify-copy"><b><span class="shield">◆</span> Verified Certificate</b>Scan the QR code to verify this certificate at NextStep AI.</div>
+        </div>
+      </footer>
+    </main>
+  </div>
+  <p class="note">Editable certificate preview. Update the sample details, then choose Print / Save PDF. The QR code points to the public verification page for the certificate ID above.</p>
+
+<script>
+  function formatDate(value){
+    if(!value) return '—';
+    const d = new Date(value + 'T12:00:00');
+    return d.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'});
+  }
+  function updateCertificate(){
+    const name = document.getElementById('nameInput').value.trim() || 'Certificate Recipient';
+    const course = document.getElementById('courseInput').value.trim() || 'Learning Program';
+    const id = document.getElementById('idInput').value.trim() || 'NSA-PENDING';
+    const date = document.getElementById('dateInput').value;
+    document.getElementById('recipient').textContent = name;
+    document.getElementById('course').textContent = course;
+    document.getElementById('certId').textContent = id;
+    document.getElementById('issueDate').textContent = formatDate(date);
+    makeQR(id);
+  }
+  function makeQR(id){
+    const holder = document.getElementById('qrcode');
+    holder.innerHTML = '';
+    // Replace this URL with your actual public verification route.
+    const verifyUrl = window.location.origin && window.location.origin !== 'null'
+      ? window.location.origin + '/certificates/verify/' + encodeURIComponent(id)
+      : 'https://YOUR-DOMAIN.example/certificates/verify/' + encodeURIComponent(id);
+    const img = new Image();
+    img.alt = 'QR code for certificate verification';
+    img.width = 66; img.height = 66;
+    img.src = 'https://api.qrserver.com/v1/create-qr-code/?size=160x160&margin=4&data=' + encodeURIComponent(verifyUrl);
+    img.onerror = () => { holder.innerHTML = '<span style="font-size:9px;color:#64748b;text-align:center">QR unavailable<br>check connection</span>'; };
+    holder.appendChild(img);
+  }
+  updateCertificate();
+</script>
+</body>
+</html>
